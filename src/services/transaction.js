@@ -304,11 +304,11 @@ const resolvers = {
             console.log(e)
           })
 
-        ms.mail.send(order.customer.email, 'orderPending', {
+        await ms.mail.send(order.customer.email, 'orderPending', {
           order: JSON.stringify(order)
         })
 
-        ms.mail.send(
+        await ms.mail.send(
           ms.config.get('settings.app.notificationEmail'),
           'orderIncoming',
           {

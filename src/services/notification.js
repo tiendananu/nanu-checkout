@@ -98,10 +98,10 @@ module.exports = {
           comment: additional_info.comment
         }).save()
 
-        ms.mail.send(order.customer.email, 'orderConfirmed', {
+        await ms.mail.send(order.customer.email, 'orderConfirmed', {
           order: JSON.stringify(order)
         })
-        ms.mail.send(
+        await ms.mail.send(
           config.get('settings.app.notificationEmail'),
           'orderIncoming',
           {
